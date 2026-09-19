@@ -10,6 +10,7 @@ https://github.com/yt-dlp/yt-dlp
 ## Install core dependencies via Winget
 * Make sure you got AV1 codec installed to be able to play the video locally
 * If AV1 codec is not installed, you may need to install AV1 Video Extension using Microsoft Store to run Videos Downloaded using AV1 codec
+* Make sure to install FFmpeg which will be required while compiling videos
 ```bash
 ## Reset winget before installing
 winget source reset --force
