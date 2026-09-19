@@ -3,7 +3,9 @@
 <br>
 
 ## Install AV1 codec
-If using Linux ( Fedora Atomic specifically )
+* These following command lines are specifically written for Fedora Atomic
+* You may change the packages name and package manager depends on the distro which you use
+
 ### AMD GPU
 ```bash
 rpm-ostree install mesa-va-drivers-freeworld mesa-vulkan-drivers-freeworld
