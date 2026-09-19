@@ -7,18 +7,6 @@ https://github.com/yt-dlp/yt-dlp
 # Make sure you got AV1 codec installed to be able to play the video locally
 # If using Windows you may need to install AV1 Video Extension using Microsoft Store
 
-# If using Linux ( Fedora Atomic specifically )
-# AMD GPU
-rpm-ostree install mesa-va-drivers-freeworld mesa-vulkan-drivers-freeworld
-# Intel GPU
-rpm-ostree install intel-media-driver
-# NVIDIA GPU
-rpm-ostree install nvidia-vaapi-driver
-rpm-ostree install libva-utils
-# Verification on Linux
-# After rebooting:
-vainfo | grep -i AV1
-
 # 1. Install core dependencies via Winget
 # Reset it before installing
 winget source reset --force
