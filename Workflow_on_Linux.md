@@ -32,7 +32,9 @@ vainfo | grep -i AV1
 
 <br>
 
-## 1. Enable RPM Fusion repositories (Required for full FFmpeg codecs)
+## Install FFmpeg
+
+### 1. Enable RPM Fusion repositories (Required for full FFmpeg codecs)
 ```bash
 sudo rpm-ostree install \
   https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
@@ -41,7 +43,7 @@ sudo rpm-ostree install \
 
 <br>
 
-## 2. Swap ffmpeg-free libraries with full ffmpeg AND layer all required packages in a single transaction
+### 2. Swap ffmpeg-free libraries with full ffmpeg AND layer all required packages in a single transaction
 ```bash
 sudo rpm-ostree override remove \
   ffmpeg-free \
@@ -60,14 +62,18 @@ sudo rpm-ostree override remove \
 
 <br>
 
-## 3. Reboot to apply system image changes
+### 3. Reboot to apply system image changes
 ```bash
 systemctl reboot
 ```
 
 <br>
 
-## 4. Install Deno via official script into user space (~/.deno)
+---
+
+<br>
+
+## Install Deno via official script into user space (~/.deno)
 ```bash
 curl -fsSL https://deno.land/install.sh | sh
 
@@ -77,7 +83,11 @@ deno --version
 
 <br>
 
-## 5. Run yt-dlp commands
+---
+
+<br>
+
+## Run yt-dlp commands
 * Run your yt-dlp commands (These remain identical as the flags are universal)
 * Replace this URL with the YouTube Video's URL which you would like to download
 * Replace it from "https://www.youtube.com/watch?v=UvV74ex-02M" to "Your_YouTube_Videos_URL"
