@@ -11,6 +11,7 @@ https://github.com/yt-dlp/yt-dlp
 * Make sure you got AV1 codec installed to be able to play the video locally
 * If AV1 codec is not installed, you may need to install AV1 Video Extension using Microsoft Store to run Videos Downloaded using AV1 codec
 * Make sure to install FFmpeg which will be required while compiling videos
+* Make sure to install your GPU Driver using the official driver installer provided by Intel, AMD or NVIDIA from their official website
 ```bash
 ## Reset winget before installing
 winget source reset --force
