@@ -103,3 +103,23 @@ yt-dlp --remote-components ejs:github --no-playlist --cookies-from-browser firef
 yt-dlp --remote-components ejs:github --no-playlist --cookies-from-browser firefox --extractor-args "youtube:player_client=android_vr,web_embedded" -f "bestaudio" -x --audio-format flac "https://www.youtube.com/watch?v=UvV74ex-02M"
 yt-dlp --remote-components ejs:github --no-playlist --cookies-from-browser firefox --extractor-args "youtube:player_client=android_vr,web_embedded" -f "bestaudio" -x --audio-format flac "Your_Video-URL"
 ```
+
+<br>
+
+---
+
+<br>
+
+## Troubleshoot
+* If you reset your rpm-ostree layers you may found out these specific errors while trying to run the yt-dlp command lines
+* `yt-dlp command not found`
+* `ffmpeg is already layered`
+```bash
+# Solution
+# Simply reinstall yt-dlp without any other packages
+rpm-ostree install yt-dlp
+
+# Explanation for this specific error
+# Since the INSTALLATION COMMAND Line we used for installing ffmpeg and required packages started with installing ffmpeg first, the ffmpeg which is installed will force stop the executed services of the command line and return output errors
+# By removing ffmpeg packages from the installation command line prevent us from causing the ffmpeg installed error
+```  
