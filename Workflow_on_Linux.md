@@ -110,6 +110,31 @@ yt-dlp --remote-components ejs:github --no-playlist --cookies-from-browser firef
 
 <br>
 
+### Download Videos with lower quality which could be played on tv
+- Format Selection (-f):
+
+- [height<=1080] (or 720): Old TVs usually have hardware decoding limits. Restricting it to 1080p (or 720p if your TV is older/low-end) prevents your TV from crashing or lagging due to attempting to decode 4K streams. (You can change 1080 to 720 if the TV still stutters).
+
+- [fps<=30]: Older TVs often lack hardware acceleration for 60fps video, causing dropped frames or choppy playback. Limiting to 30fps ensures smooth playback.
+
+- [vcodec^=avc1]: This forces H.264 (AVC). Almost all older TVs, media boxes, and hardware decoders have dedicated, highly optimized hardware acceleration for H.264. Newer codecs like VP9 or AV1 will force your CPU to do software decoding, which will lag heavily on weak chips.
+
+- ba[acodec^=mp4a]: Selects standard AAC audio, which has universal hardware/software support.
+```bash
+yt-dlp --remote-components ejs:github --no-playlist --cookies-from-browser firefox \
+  --extractor-args "youtube:player_client=android_vr,web_embedded" \
+  -f "bv*[height<=1080][fps<=30][vcodec^=avc1]+ba[acodec^=mp4a] / b[height<=1080][fps<=30]" \
+  --merge-output-format mkv \
+  --postprocessor-args "ffmpeg:-c:v copy -c:a aac -b:a 192k" \
+  "https://www.youtube.com/watch?v=kp0nbIAnhn0"
+```
+
+<br>
+
+---
+
+<br>
+
 ## Troubleshoot
 * If you reset your rpm-ostree layers you may found out these specific errors while trying to run the yt-dlp command lines
 * `yt-dlp command not found`
