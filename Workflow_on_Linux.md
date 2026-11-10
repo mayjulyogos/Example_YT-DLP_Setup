@@ -94,14 +94,12 @@ deno --version
 
 ### Video and Audio download
 ```bash
-yt-dlp --remote-components ejs:github --no-playlist --cookies-from-browser firefox --extractor-args "youtube:player_client=android_vr,web_embedded" -f "bestvideo+bestaudio/best" --merge-output-format mkv --postprocessor-args "ffmpeg:-c:v copy -c:a flac" "[https://www.youtube.com/watch?v=UvV74ex-02M](https://www.youtube.com/watch?v=kp0nbIAnhn0)"
-yt-dlp --remote-components ejs:github --no-playlist --cookies-from-browser firefox --extractor-args "youtube:player_client=android_vr,web_embedded" -f "bestvideo+bestaudio/best" --merge-output-format mkv --postprocessor-args "ffmpeg:-c:v copy -c:a flac" "Your_Video_URL"
+yt-dlp -f "bestvideo+bestaudio/best" --merge-output-format mkv --audio-format flac -x "https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s"
 ```
 
 ### Audio-only download
 ```bash
-yt-dlp --remote-components ejs:github --no-playlist --cookies-from-browser firefox --extractor-args "youtube:player_client=android_vr,web_embedded" -f "bestaudio" -x --audio-format flac "https://www.youtube.com/watch?v=UvV74ex-02M"
-yt-dlp --remote-components ejs:github --no-playlist --cookies-from-browser firefox --extractor-args "youtube:player_client=android_vr,web_embedded" -f "bestaudio" -x --audio-format flac "Your_Video-URL"
+yt-dlp -f "bestaudio" -x --audio-format flac "https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s"
 ```
 
 <br>
@@ -111,22 +109,8 @@ yt-dlp --remote-components ejs:github --no-playlist --cookies-from-browser firef
 <br>
 
 ### Download Videos with lower quality which could be played on tv
-- Format Selection (-f):
-
-- [height<=1080] (or 720): Old TVs usually have hardware decoding limits. Restricting it to 1080p (or 720p if your TV is older/low-end) prevents your TV from crashing or lagging due to attempting to decode 4K streams. (You can change 1080 to 720 if the TV still stutters).
-
-- [fps<=30]: Older TVs often lack hardware acceleration for 60fps video, causing dropped frames or choppy playback. Limiting to 30fps ensures smooth playback.
-
-- [vcodec^=avc1]: This forces H.264 (AVC). Almost all older TVs, media boxes, and hardware decoders have dedicated, highly optimized hardware acceleration for H.264. Newer codecs like VP9 or AV1 will force your CPU to do software decoding, which will lag heavily on weak chips.
-
-- ba[acodec^=mp4a]: Selects standard AAC audio, which has universal hardware/software support.
 ```bash
-yt-dlp --remote-components ejs:github --no-playlist --cookies-from-browser firefox \
-  --extractor-args "youtube:player_client=android_vr,web_embedded" \
-  -f "bv*[height<=1080][fps<=30][vcodec^=avc1]+ba[acodec^=mp4a] / b[height<=1080][fps<=30]" \
-  --merge-output-format mkv \
-  --postprocessor-args "ffmpeg:-c:v copy -c:a aac -b:a 192k" \
-  "https://www.youtube.com/watch?v=kp0nbIAnhn0"
+yt-dlp --no-playlist -f "bv*[height<=1080][fps<=30]+ba/b[height<=1080][fps<=30]" --recode-video mp4 --postprocessor-args "ffmpeg:-c:v libx264 -preset fast -crf 22 -c:a aac -b:a 192k" "https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s"
 ```
 
 <br>
