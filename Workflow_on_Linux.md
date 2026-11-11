@@ -94,12 +94,12 @@ deno --version
 
 ### Video and Audio download
 ```bash
-yt-dlp -f "bestvideo+bestaudio/best" --merge-output-format mkv --audio-format flac -x "https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s"
+yt-dlp -f "bestvideo+bestaudio/best" --merge-output-format mkv --audio-format flac -x 'https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s'
 ```
 
 ### Audio-only download
 ```bash
-yt-dlp -f "bestaudio" -x --audio-format flac "https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s"
+yt-dlp -f "bestaudio" -x --audio-format flac 'https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s'
 ```
 
 <br>
@@ -110,7 +110,7 @@ yt-dlp -f "bestaudio" -x --audio-format flac "https://www.youtube.com/watch?v=1V
 
 ### Download Videos with lower quality which could be played on tv
 ```bash
-yt-dlp --no-playlist -f "bv*[height<=1080][fps<=30]+ba/b[height<=1080][fps<=30]" --recode-video mp4 --postprocessor-args "ffmpeg:-c:v libx264 -preset fast -crf 22 -c:a aac -b:a 192k" "https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s"
+yt-dlp --no-playlist -f "bv*[height<=1080][fps<=30]+ba/b[height<=1080][fps<=30]" --recode-video mp4 --postprocessor-args "ffmpeg:-c:v libx264 -preset fast -crf 22 -c:a aac -b:a 192k" 'https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s'
 ```
 
 <br>
