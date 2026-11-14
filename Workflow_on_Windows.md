@@ -42,10 +42,10 @@ deno --version
 
 ### Video and Audio download
 ```bash
-yt-dlp -f "bestvideo+bestaudio/best" --merge-output-format mkv --audio-format flac -x https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s
+yt-dlp -f "bestvideo+bestaudio/best" --merge-output-format mov --postprocessor-args "Merger:-c:v copy -c:a pcm_s16le" "https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s"
 ```
 
 ### Audio-only download
 ```bash
-yt-dlp -f "bestaudio" -x --audio-format flac https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s
+yt-dlp -f "bestaudio/best" -x --audio-format wav --postprocessor-args "ExtractAudio:-c:a pcm_s16le -ar 48000" "https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s"
 ```
