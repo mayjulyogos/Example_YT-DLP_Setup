@@ -94,7 +94,7 @@ deno --version
 
 ### Video and Audio download
 ```bash
-yt-dlp -f "bestvideo+bestaudio/best" --merge-output-format mkv --audio-format flac -x https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s
+yt-dlp -f "bestvideo+bestaudio/best" --merge-output-format mkv --audio-format flac https://www.youtube.com/watch?v=1Vyzla9mx4g&t=3421s
 ```
 
 ### Audio-only download
